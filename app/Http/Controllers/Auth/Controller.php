@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Api;
+namespace App\Http\Controllers;
 
 use App\Models\SsoUser;
 use Illuminate\Http\Request;
@@ -14,6 +14,18 @@ class Controller extends BaseController
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
     public $currentUser;
+
+    public function __construct(Request $request)
+    {
+        if ($request->session()->has('x-rccl-session-id')) {
+            $user = $request->session()->get('x-rccl-session-id');
+        }
+        if ($request->header()->has('x-rccl-session-id')) {
+            $user = $request->header()->get('x-rccl-session-id');
+        }
+        $this->currentUser = SsoUser::ofUserAccess($currentSession->user)->first();
+
+    }
 
     public function successfulResponse($responseData = [])
     {

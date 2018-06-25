@@ -13,7 +13,7 @@ class SsoUserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         $response['result'] = SsoUser::paginate(10);
         return $this->successfulResponse($response);
@@ -39,11 +39,9 @@ class SsoUserController extends Controller
     {
         try {
             $userData = $request->all();
-            $userData['password'] = md5($request->password);
-            $userData['updated_at'] = Carbon::now();
-            $userData['created_at'] = Carbon::now();
-            $userData['updated_by'] = $request->input('requestUserId', null);
-            $userData['created_by'] = $request->input('requestUserId', null);
+            $userData['passwd'] = encryptPassword($request->password);
+            $userData['creation_date'] = Carbon::now();
+            $userData['passwd_update'] = Carbon::now();
             User::create($userData);
         } catch (Exception $e) {
             return $this->internalError('Error Adding User');
@@ -59,18 +57,7 @@ class SsoUserController extends Controller
      */
     public function show($id)
     {
-        $ldap_api_enc_method = 'aes-128-cbc';
-        $ldap_api_enc_iv = md5(sprintf("%s-%s", $ldap_api_enc_method, '#!/ldap/restapi/rccl/0123455@'));
-        $ldap_api_enc_pass = md5(sprintf("%s-%s", $ldap_api_enc_method, '#!/ldap/restapi/rccl/9876543$'));
-        $user = SsoUser::where('email', $id)->first();
-        $userPassword = rtrim( base64_decode( openssl_decrypt(
-            base64_decode( $user->passwd ),
-            $ldap_api_enc_method,
-            $ldap_api_enc_pass,
-            false,
-            mb_substr($ldap_api_enc_iv, 0, 16)
-        ) ), "\0" );
-        return $userPassword;
+
     }
 
     /**
@@ -95,9 +82,7 @@ class SsoUserController extends Controller
     {
         try {
             $user = User::findOrFail($id);
-            $user->updated_at = Carbon::now();
-            $user->updated_by = $request->input('requestUserId', null);
-            $user->update($request->except(['email', 'password']));
+            $user->update($request->except(['passwd']));
         } catch (Exception  $e) {
             return $this->internalError('Error Updating User');
         }

@@ -10,7 +10,7 @@ class SsoUser extends Model
 
     public $incrementing = false;
 
-    protected $primaryKey = 'your_key_name';
+    protected $primaryKey = 'rw_id';
 
     protected $fillable = [
         'firstname',
@@ -36,12 +36,12 @@ class SsoUser extends Model
     ];
 
     protected $hidden = [
-      // 'passwd',
-      'creation_date',
+      'passwd',
     ];
 
     protected $dates = [
         'creation_date',
+        'passwd_update',
     ];
 
     public function scopeOfUserAccess($query, $username)

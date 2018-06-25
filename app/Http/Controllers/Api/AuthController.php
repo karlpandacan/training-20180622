@@ -10,11 +10,6 @@ use App\Http\Controllers\Api\Controller;
 
 class AuthController extends Controller
 {
-    public function __construct(Request $request)
-    {
-        parent::__construct($request);
-    }
-
     public function login(Request $request)
     {
         try {
@@ -83,7 +78,7 @@ class AuthController extends Controller
 
     public function logout(Request $request)
     {
-        $user = $this->currentUser;
+        $user = $request->currentUser;
         $applications = ['tm', 'mstr', 'rclcrew', 'ctrac', 'ctrac_app'];
         foreach ($applications as $application) {
             if ($user->{$application} !== null) {
@@ -112,8 +107,7 @@ class AuthController extends Controller
                 'password-matching' => ['password', 'confirm_password']
             ]);
         }
-        $currentSession = LdapSession::where('sid', $request->header('x-rccl-session-id'))->first();
-        $user = SsoUser::ofUserAccess($currentSession->user)->first();
+        $user = $request->currentUser;
         if ($user->passwd !== $request->input('current_password')) {
             return $this->badRequest([
                 'message' => 'Current Password is Incorrect',

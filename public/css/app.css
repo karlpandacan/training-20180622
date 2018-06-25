@@ -10417,3 +10417,153 @@ a.text-dark:focus {
           box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
 }
 
+.icon-image {
+  width: 25%;
+  height: 25%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 15%;
+}
+
+#container_app_rclcrew {
+  height: 18em;
+  width: 50%;
+  padding-top: 7%;
+  float: left;
+  background-color: #F6CE74;
+  border: 3px solid #FFFFFF;
+  position: relative;
+}
+
+#container_app_appoint {
+  height: 18em;
+  width: 50%;
+  padding-top: 7%;
+  float: left;
+  background-color: #5572AB;
+  border: 3px solid #FFFFFF;
+  position: relative;
+  cursor: pointer;
+}
+
+#container_app_ctrac {
+  height: 18em;
+  width: 50%;
+  padding-top: 7%;
+  float: left;
+  background-color: #108A8D;
+  border: 3px solid #FFFFFF;
+  position: relative;
+}
+
+#container_app_tm {
+  height: 18em;
+  width: 50%;
+  padding-top: 7%;
+  float: left;
+  background-color: #6CA2D7;
+  border: 3px solid #FFFFFF;
+  position: relative;
+}
+
+#container_app_mstr {
+  height: 18em;
+  width: 50%;
+  padding-top: 7%;
+  float: left;
+  background-color: #0F2B5B;
+  border: 3px solid #FFFFFF;
+  position: relative;
+}
+
+#rclcrew_icon {
+  /*height: 50%;*/
+  height: 7.500em;
+  width: 40%;
+  background: url("/images/icon-RCLCrewTravel.png") no-repeat;
+  background-position: top center;
+  background-size: 60%;
+  top: 10%;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+}
+
+#ctrac_icon {
+  /*height: 50%;*/
+  height: 7.500em;
+  width: 40%;
+  background: url("/images/icon-CTRAC.png") no-repeat;
+  background-position: top center;
+  background-size: 60%;
+  top: 10%;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+}
+
+#tm_icon {
+  /*height: 50%;*/
+  height: 7.500em;
+  width: 40%;
+  background: url("/images/icon-TravelMart.png") no-repeat;
+  background-position: top center;
+  background-size: 60%;
+  top: 10%;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+}
+
+#mstr_icon {
+  /*height: 50%;*/
+  height: 7.500em;
+  width: 40%;
+  background: url("/images/icon-RCLAnalytics.png") no-repeat;
+  background-position: top center;
+  background-size: 60%;
+  top: 10%;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+}
+
+#camex_icon {
+  /*height: 50%;*/
+  height: 7.500em;
+  width: 40%;
+  background: url("/images/icon-CAMex.png") no-repeat;
+  background-position: top center;
+  background-size: 60%;
+  top: 10%;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+}
+
+#appoint_icon {
+  /*height: 50%;*/
+  height: 7.500em;
+  width: 40%;
+  background: url("/images/icon-AppointmentTool.png") no-repeat;
+  background-position: top center;
+  background-size: 60%;
+  top: 10%;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+}
+
+#icon_tag {
+  /*font-size: 24px;*/
+  font-size: 1.500em;
+  text-align: center;
+  font-family: 'LatoRegular', sans-serif;
+  color: #FFFFFF;
+  width: 75%;
+  top: 20%;
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+}
+
